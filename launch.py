@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import sys
 from src.clockify_client import ClockifyClient
+from src.clickify_mcp_server import start_server
 
 def validate_configuration():
     """
@@ -39,13 +40,9 @@ def validate_configuration():
         print(f"Erreur de validation : {e}")
         sys.exit(1)
 
-def start_server():
-    """
-    Démarre le serveur MCP
-    """
-    from src.cli import main
-    main()
-
-if __name__ == '__main__':
+def main():
     validate_configuration()
     start_server()
+
+if __name__ == '__main__':
+    main()

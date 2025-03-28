@@ -6,16 +6,18 @@ description: MCP Server for Clockify Time Tracking Integration
 # Configuration de l'API Smithery
 api:
   version: 1.0
-  endpoints:
-    - path: /projects
-      method: GET
-      description: Liste les projets Clockify
-    - path: /tags
-      method: GET
-      description: Liste les tags Clockify
-    - path: /time-entries
-      method: GET
-      description: Récupère les entrées de temps
+  protocol: json-rpc
+
+# Endpoints disponibles via JSON-RPC
+endpoints:
+  - method: list_tools
+    description: Liste tous les outils disponibles
+  - method: list_projects
+    description: Récupère la liste des projets Clockify
+  - method: list_tags
+    description: Récupère la liste des tags Clockify
+  - method: get_time_entries
+    description: Récupère les entrées de temps avec des filtres optionnels
 
 # Paramètres de configuration requis
 config:
@@ -28,9 +30,10 @@ dependencies:
   - python
   - requests
   - python-dotenv
+  - jsonrpcserver
 
 # Métadonnées du serveur
 server:
   type: python
-  entry_point: src/cli.py
+  entry_point: launch.py
   runtime: python3.8+

@@ -20,5 +20,8 @@ RUN pip install .
 ENV CLOCKIFY_API_KEY=""
 ENV WORKSPACE_ID=""
 
+# Port pour le serveur JSON-RPC
+EXPOSE 5000
+
 # Point d'entrée pour le serveur
-CMD ["python", "-m", "src.cli"]
+CMD ["python", "launch.py"]
