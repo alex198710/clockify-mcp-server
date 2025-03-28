@@ -1,7 +1,7 @@
 import argparse
 import os
 from dotenv import load_dotenv
-from .clockify_client import ClockifyClient
+from src.clockify_client import ClockifyClient
 from datetime import datetime, timedelta
 
 def main():

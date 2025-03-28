@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+from dotenv import load_dotenv
 import sys
 from src.clockify_client import ClockifyClient
 
@@ -7,6 +8,9 @@ def validate_configuration():
     """
     Valide la configuration du serveur MCP
     """
+    # Charger les variables d'environnement
+    load_dotenv()
+
     # Vérifier les variables d'environnement
     api_key = os.getenv('CLOCKIFY_API_KEY')
     workspace_id = os.getenv('WORKSPACE_ID')
