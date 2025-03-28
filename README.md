@@ -1,5 +1,7 @@
 # Clockify Time Tracker
 
+[![smithery badge](https://smithery.ai/badge/@alex198710/clockify-mcp-server)](https://smithery.ai/server/@alex198710/clockify-mcp-server)
+
 ## Description
 Un outil en ligne de commande pour interagir avec l'API Clockify et gérer vos entrées de temps.
 
