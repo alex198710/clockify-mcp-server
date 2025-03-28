@@ -1,0 +1,36 @@
+name: clockify-time-tracker
+version: 0.1.0
+type: mcp-server
+description: MCP Server for Clockify Time Tracking Integration
+
+# Configuration de l'API Smithery
+api:
+  version: 1.0
+  endpoints:
+    - path: /projects
+      method: GET
+      description: Liste les projets Clockify
+    - path: /tags
+      method: GET
+      description: Liste les tags Clockify
+    - path: /time-entries
+      method: GET
+      description: Récupère les entrées de temps
+
+# Paramètres de configuration requis
+config:
+  required:
+    - CLOCKIFY_API_KEY
+    - WORKSPACE_ID
+
+# Dépendances du projet
+dependencies:
+  - python
+  - requests
+  - python-dotenv
+
+# Métadonnées du serveur
+server:
+  type: python
+  entry_point: src/cli.py
+  runtime: python3.8+

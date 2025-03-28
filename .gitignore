@@ -1,0 +1,21 @@
+# Environnements
+.env
+venv/
+env/
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDEs et éditeurs
+.vscode/
+.idea/
+
+# Logs
+*.log
