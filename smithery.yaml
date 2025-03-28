@@ -1,39 +1,31 @@
-name: clockify-time-tracker
-version: 0.1.0
-type: mcp-server
-description: MCP Server for Clockify Time Tracking Integration
+# Smithery.ai configuration
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      clockifyApiKey:
+        type: string
+        description: "Clockify API Key"
+      workspaceId:
+        type: string
+        description: "Clockify Workspace ID"
+    required:
+      - clockifyApiKey
+      - workspaceId
 
-# Configuration de l'API Smithery
-api:
-  version: 1.0
-  protocol: json-rpc
+  commandFunction: |-
+    (config) => ({
+      "command": "python",
+      "args": [
+        "launch.py"
+      ],
+      "env": {
+        "CLOCKIFY_API_KEY": config.clockifyApiKey,
+        "WORKSPACE_ID": config.workspaceId
+      }
+    })
 
-# Endpoints disponibles via JSON-RPC
-endpoints:
-  - method: list_tools
-    description: Liste tous les outils disponibles
-  - method: list_projects
-    description: Récupère la liste des projets Clockify
-  - method: list_tags
-    description: Récupère la liste des tags Clockify
-  - method: get_time_entries
-    description: Récupère les entrées de temps avec des filtres optionnels
-
-# Paramètres de configuration requis
-config:
-  required:
-    - CLOCKIFY_API_KEY
-    - WORKSPACE_ID
-
-# Dépendances du projet
-dependencies:
-  - python
-  - requests
-  - python-dotenv
-  - jsonrpcserver
-
-# Métadonnées du serveur
-server:
-  type: python
-  entry_point: launch.py
-  runtime: python3.8+
+build:
+  dockerfile: Dockerfile
+  dockerBuildPath: .
